@@ -10,7 +10,7 @@
 <?php
   include('connection.php');
 
-  $retrieve = mysqli_query($con, "SELECT * FROM tblstudents");
+  $retrieve = mysqli_query($con, "SELECT tblstudents.*, tblaccounts.username, tblaccounts.password FROM tblstudents JOIN tblaccounts ON tblstudents.studID = tblaccounts.studID");
   if(!$retrieve){
     die(mysqli_error());
   }
@@ -28,12 +28,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Homepage</title>
+		<title>Document</title>
 	</head>
 	<body>
-		<h2>Account Records</h2>
-		<p><a href="adduser.php">Add New User</a></p>
-		<p><a href="logout.php">Logout</a></p>
+		<h1>Dashboard</h1>
+		<p><a href="adduser.php">Add User</a></p>
+		
 		<table border="1" class="mytable">
       <thead>
         <tr>
@@ -42,6 +42,8 @@
           <th>Middle Name</th>
           <th>Last Name</th>
           <th>Photo</th>
+		  <th>Username</th>
+		  <th>Password</th>
 		  <th>Update</th>
 
         </tr>
@@ -55,6 +57,8 @@
                   <td><?php echo $row['middlename']; ?></td>
                   <td><?php echo $row['lastname']; ?></td>
 				  <td><img style="width: 20%;" src="<?php echo $row['photo']; ?>"></td>
+				  <td><?php echo $row['username']; ?></td>
+				  <td><?php echo $row['password']; ?></td>
                   <td>
                     <a href="update.php?studID=<?php echo $row['studID']; ?>">Update</a>
                   </td>
@@ -62,11 +66,13 @@
 
           <?php } ?>
       </tbody>
-
-        <tr>
 		</table>
+		<p><a href="logout.php">Logout</a></p>
 		
 	</body>
 </html>
-<?php include('closeconnection.php');?>
+
+<?php
+	mysqli_close($con);
+?>
 

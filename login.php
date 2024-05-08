@@ -37,12 +37,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Login Page</title>
+      <title>Document</title>
   </head>
   <body>
        
-	   <center>
-	   <br>
         <h1>Login</h1>
 		<br>
         <form action="login.php" method="POST">
@@ -54,9 +52,7 @@
         </form>
 		<br>
 		<a href="register.php">Sign Up</a>
-		<center>
 
-      
-     
+
   </body>
 </html>

@@ -43,10 +43,10 @@ if(isset($_POST['submit_btn'])){
                 exit();
             }
         } else {
-            echo "There was an error uploading the file, please try again!";
+            echo "Please try again!";
         }
     } else {
-        echo "Please select a file to upload.";
+        echo "Select a file to upload.";
     }
 }
 ?>
@@ -58,34 +58,33 @@ if(isset($_POST['submit_btn'])){
     <title>Add User</title>
 </head>
 <body>
-<center>
-    <br>
+
     <h1>Add User</h1>
 	<p><a href="dashboard.php">Home</a></p>
     <br>
     <form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
 
-        <div><input type="text" name="fname" placeholder="First name"/></div>
-        <br>
-        <div><input type="text" name="mname" placeholder="Middle name"/></div>
-        <br>
-        <div><input type="text" name="lname" placeholder="Last name"/></div>
-        <br>
+        <input type="text" name="fname" placeholder="First name"/>
+        <br><br>
+        <input type="text" name="mname" placeholder="Middle name"/>
+        <br><br>
+        <input type="text" name="lname" placeholder="Last name"/>
+        <br><br>
         
-        <div><input type="text" name="username" placeholder="Username"/></div>
-        <br>
-        <div><input type="password" name="password" placeholder="Password"/></div>
-        <br>
+        <input type="text" name="username" placeholder="Username"/>
+        <br><br>
+        <input type="password" name="password" placeholder="Password"/>
+        <br><br>
 
         <div>Select file to upload: <br><input type="file" name="fileToUpload" id="fileToUpload"></div>
-        <br>
+        <br><br>
         <div><input type="submit" name="submit_btn" value="Add User"/></div>
     </form>
-    <br>
 
-</center>
 </body>
 </html>
 
-<?php include("closeconnection.php");?>
+<?php
+	mysqli_close($con);
+?>
 

@@ -77,4 +77,6 @@ if(isset($_POST['submit_btn'])){
 </body>
 </html>
 
-<?php include("closeconnection.php");?>
+<?php
+	mysqli_close($con);
+?>

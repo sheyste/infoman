@@ -14,7 +14,7 @@ include("connection.php");
 if(isset($_GET['studID'])){
     $studID = $_GET['studID'];
 } else {
-    echo "Student ID is not set.";
+    echo "StudID is not set.";
     exit; 
 }
 
@@ -59,10 +59,9 @@ if(isset($_POST['update_btn'])){
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Update User</title>
+        <title>Document</title>
     </head>
     <body>
-	<center>
         <h1>Update User</h1>
 		<p><a href="dashboard.php">Home</a></p>
         <?php
@@ -75,37 +74,27 @@ if(isset($_POST['update_btn'])){
         while($row = mysqli_fetch_array($result)){?>
 
         <form method="POST" action="update.php?studID=<?php echo $studID; ?>" enctype="multipart/form-data">
-            <div>
-				<p>First Name:</p>
+
                 <input type="text" name="txtfname" placeholder="First Name" value="<?php echo $row['firstname']?>"/>
-            </div>
-            <div>
-				<p>Middle Name:</p>
+				<br><br>
                 <input type="text" name="txtmname" placeholder="Middle Name" value="<?php echo $row['middlename']?>"/>
-            </div>
-            <div>
-				<p>Last Name:</p>
+				<br><br>
                 <input type="text" name="txtlname" placeholder="Last Name" value="<?php echo $row['lastname']?>"/>
-            </div>
-            <div>
-				<p>Username:</p>
+				<br><br>
                 <input type="text" name="username" placeholder="Username" value="<?php echo $row['username']?>"/>
-            </div>
-            <div>
-				<p>Password:</p>
+				<br><br>
                 <input type="password" name="password" placeholder="Password" value="<?php echo $row['password']?>"/>
-            </div>
+				<br><br>
 			<br>
-
-            <div>Select file to upload: <input type="file" name="fileToUpload" id="fileToUpload"></div>
-			<br>
-
-            <div>
+            <div>Select file to upload: <input type="file" name="fileToUpload" id="fileToUpload""></div>
+			<br><br><br>
                 <input type="submit" name="update_btn" value="Update"/>
-            </div>
+
         </form>
         <?php } ?>
-	</center>
     </body>
 </html>
-<?php include("closeconnection.php");?>
+
+<?php
+	mysqli_close($con);
+?>
